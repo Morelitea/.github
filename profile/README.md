@@ -38,3 +38,13 @@ Pathkit is a powerful GM organization tool designed specifically for Pathfinder 
 In addition to our software projects, we offer a selection of custom tea blends inspired by our gaming content. These unique blends are carefully crafted using high-quality ingredients, designed to accompany your gaming sessions and add a touch of magic to your tea break.
 
 Check out our website [link to website] to explore our tea collection and discover the perfect blend for your gaming adventures.
+
+## Get Involved
+
+We welcome contributions, feedback, and collaboration from the community. If you're interested in our projects or have any questions, feel free to reach out to us.
+
+- Email: [email address]
+- Twitter: [Twitter handle]
+- Discord: [Discord server invite]
+
+We're excited to connect with fellow gamers, developers, and tea enthusiasts. Join us on this journey of creativity and enjoyment!
