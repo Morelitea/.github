@@ -1,8 +1,8 @@
 # Morelitea
 
-Welcome to Morelitea, a family-owned and operated business dedicated to creating games, gaming support tools, and custom tea blends! 🍄 :tea:
+Welcome to Morelitea, a family-owned and operated business dedicated to creating games, gaming support tools, and custom tea blends!
 
-## About Us
+## 🍄 About Us
 
 At Morelitea, we believe in the power of creativity, gaming, and the joy of sharing a cup of tea. Our family, the Morels, is passionate about developing immersive gaming experiences and crafting unique tea blends inspired by our content. With a blend of technical expertise and a love for games, we strive to create high-quality software and enjoyable tea experiences for our community.
 
@@ -17,7 +17,7 @@ At Morelitea, we believe in the power of creativity, gaming, and the joy of shar
 - **Melisande** - 
   Melisande oversees project management and quality assurance. With exceptional organizational skills and a dedication to ensuring the best user experience, Melisande ensures that our projects are delivered on time and meet the highest standards.
 
-## Projects
+## 🍄 Projects
 
 We have developed several exciting projects within the Morelitea organization. Here are a few highlights:
 
@@ -33,13 +33,13 @@ Pathkit is a powerful GM organization tool designed specifically for Pathfinder 
 
 - Repository: [link to repository]
 
-## Custom Tea Blends
+## 🍄 Custom Tea Blends :tea:
 
 In addition to our software projects, we offer a selection of custom tea blends inspired by our gaming content. These unique blends are carefully crafted using high-quality ingredients, designed to accompany your gaming sessions and add a touch of magic to your tea break.
 
 Check out our website [link to website] to explore our tea collection and discover the perfect blend for your gaming adventures.
 
-## Get Involved
+## 🍄 Get Involved
 
 We welcome contributions, feedback, and collaboration from the community. If you're interested in our projects or have any questions, feel free to reach out to us.
 
