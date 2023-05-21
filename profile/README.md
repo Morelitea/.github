@@ -1,6 +1,6 @@
 # Morelitea
 
-Welcome to Morelitea, a family-owned and operated business dedicated to creating games, gaming support tools, and custom tea blends!
+Welcome to Morelitea, a family-owned and operated business dedicated to creating games, gaming support tools, and custom tea blends! 🍄 :tea:
 
 ## About Us
 
