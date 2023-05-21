@@ -29,7 +29,7 @@ Our free and open-source JavaScript Dice Roller Package provides a versatile too
 
 ### Pathkit - GM Organization Tool for Pathfinder Players
 
-Pathkit is a powerful GM organization tool designed specifically for Pathfinder players. It simplifies campaign management, player tracking, and encounter planning, allowing Game Masters to focus on crafting immersive storytelling experiences.
+Pathkit is a powerful open-source GM organization tool designed specifically for Pathfinder players. It simplifies campaign management, player tracking, and encounter planning, allowing Game Masters to focus on crafting immersive storytelling experiences.
 
 - Repository: [link to repository]
 
