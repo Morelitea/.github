@@ -31,7 +31,7 @@ Our free and open-source JavaScript Dice Roller Package provides a versatile too
 
 Pathkit is a powerful open-source GM organization tool designed specifically for Pathfinder players. It simplifies campaign management, player tracking, and encounter planning, allowing Game Masters to focus on crafting immersive storytelling experiences.
 
-- Repository: [link to repository]
+- Repository: [https://github.com/Morelitea/PathKit]
 
 ## 🍄 Custom Tea Blends :tea:
 
