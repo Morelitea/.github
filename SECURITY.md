@@ -23,28 +23,13 @@ Include what you can:
 
 ## Which repositories this covers
 
-Being honest about this is the point of writing it down: a report is worth more
-when the reporter knows what will happen to it.
+GitHub applies this policy to every Morelitea repository that has no policy of
+its own. A repository-local `SECURITY.md` takes precedence and may provide a
+more specific reporting route or support window.
 
-**Actively developed — report anything.**
-
-| Repository | |
-|---|---|
-| `initiative` | the platform. Has its own [`SECURITY.md`](https://github.com/Morelitea/initiative/blob/main/SECURITY.md) with the tenancy model in detail; read that one first |
-| `initiative_auto`, `initiative_billing`, `initiative_infra` | the companion services and the deployment |
-| `initiative-app-kit`, `initiative-github` | the app protocol and its reference app |
-| `morelitea-hydrogen` | the storefront |
-| `inventory-management` | our fork of [OpenBoxes](https://github.com/openboxes/openboxes) |
-
-For `inventory-management`, an issue in upstream OpenBoxes rather than in our
-changes is better reported to
-[OpenBoxes](https://github.com/openboxes/openboxes/security) so every downstream
-fork benefits. Tell us either way and we will make sure it reaches them.
-
-**Not actively developed.** `PathKit`, `TealeavesGMKit`, `Tile-Match` and
-`Mycorzha-Map` are hobby and game projects. Reports are still welcome and we
-would still rather know, but a fix may take a while or may be an archive notice
-rather than a patch. Saying that up front is fairer than an unanswered email.
+Reports about any non-archived repository are supported. Reports about an
+archived repository are still welcome, but the resolution may be an archive
+notice rather than a patch.
 
 ## What we ask
 
