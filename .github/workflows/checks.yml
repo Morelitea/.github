@@ -1,0 +1,26 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  security-policy:
+    name: Disclosure policy
+    runs-on: ubuntu-latest
+    steps:
+      # Pinned to a commit, not a tag, for the reason T59 gives: a tag moves and
+      # the reviewed build is not the published one. Same SHAs the initiative
+      # workflows already use.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24
+      # This repository has no package.json and needs none — the check is one
+      # script against one file, and a dependency would be a supply chain for a
+      # thing that reads Markdown.
+      - run: node scripts/check-security-policy.mjs
