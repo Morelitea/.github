@@ -1,0 +1,126 @@
+# Redact security detail that lands in a comment on a PUBLIC repository.
+#
+# The policy is that a public pull request carries an identifier and nothing
+# else: no weakness described, no architecture, no posture. Enforcing that by
+# reading every comment does not work, because most comments are not written by
+# us. An automated reviewer posts its findings in full by design, and it does so
+# again on the next push, so masking by hand is not a control -- it is a chore
+# that is one distraction away from being skipped.
+#
+# What this does is narrow on purpose: it looks at ONE comment, the one that
+# just arrived, and replaces its body with a pointer if the body names a
+# weakness. It does not delete, so the record that a review happened survives,
+# and the original is recoverable from the edit history by anyone with access.
+#
+# Reused rather than copied: three public repositories call this file, so the
+# word list cannot drift between them.
+name: Mask public security detail
+
+on:
+  workflow_call:
+    inputs:
+      tracker_hint:
+        description: Where the detail is kept, named in the replacement text.
+        required: false
+        default: the private security tracker
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  mask:
+    runs-on: ubuntu-latest
+    # An edit of our own replacement would otherwise re-enter here. The
+    # replacement is clean, so it would stop after one pass anyway; this makes
+    # that a property of the trigger rather than of the word list.
+    if: ${{ !contains(github.event.comment.body, 'withheld under the public-repository policy') }}
+    steps:
+      - name: Read the comment and redact it if it names a weakness
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_ID: ${{ github.event.comment.id }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_TITLE: ${{ github.event.issue.title || github.event.pull_request.title }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          TRACKER_HINT: ${{ inputs.tracker_hint }}
+          REPO: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, sys
+
+          # Kept in step with the estate gate. Prefixes, matched whole-word.
+          TELLS = [
+              "vulnerab", "exploit", "attack", "bypass", "forge",
+              "inject", "leak", "unsafe",
+              "insecure", "unauthenticated", "unvalidated", "unsanitiz",
+              "unescaped", "spoof", "tamper", "replay", "escalat", "takeover",
+              "csrf", "xss", "rce",
+              "plaintext", "cleartext", "hardcoded", "credential", "secret key",
+          ]
+          # Ordinary words a TELL is a prefix of. Without these the check fires
+          # on `forget()` for "forge" and on "source" for "rce", and a check
+          # that cries wolf gets switched off -- which costs more than the
+          # words it was watching for.
+          INNOCENT = {
+              "forget", "forgets", "forgetting", "forgot", "forgotten",
+              "source", "sources", "sourced", "sourcing",
+              "resource", "resources", "resourcing",
+              "force", "forced", "forces", "forcing", "enforce", "enforced",
+              "enforces", "enforcement", "reinforce", "reinforced",
+          }
+          WORD = re.compile(r"[A-Za-z][A-Za-z0-9]*")
+          # Names the reporting PROCESS rather than a weakness.
+          PROCESS = re.compile(
+              r"vulnerability disclosure|private vulnerability reporting|"
+              r"security policy|report it privately|disclosure policy",
+              re.I,
+          )
+
+          body = os.environ["COMMENT_BODY"]
+          # Fenced blocks, inline spans and quotes are somebody else's words or
+          # a literal; redacting on them reports the quoting, not the telling.
+          stripped = re.sub(r"```.*?```", " ", body, flags=re.S)
+          stripped = re.sub(r"`[^`]*`", " ", stripped)
+          stripped = re.sub(r"^\s*>.*$", " ", stripped, flags=re.M)
+          stripped = PROCESS.sub(" ", stripped)
+
+          hits = sorted({
+              tell
+              for word in WORD.findall(stripped)
+              for tell in TELLS
+              if word.lower() not in INNOCENT and word.lower().startswith(tell)
+          })
+          if not hits:
+              print("nothing in this comment names a weakness")
+              sys.exit(0)
+
+          # Carry the identifier forward so the comment still points somewhere.
+          haystack = f"{os.environ.get('PR_TITLE','')} {os.environ.get('PR_BRANCH','')}"
+          match = re.search(r"\bT(\d+)\b", haystack, re.I)
+          pointer = f"**T{match.group(1)}**" if match else "the identifier on this pull request"
+
+          replacement = (
+              "A comment here named a weakness, so its text is withheld under "
+              "the public-repository policy: a public pull request carries an "
+              "identifier and nothing else.\n\n"
+              f"The detail is kept in {os.environ['TRACKER_HINT']} under {pointer}. "
+              "The original text is in this comment's edit history for anyone "
+              "with access to the repository.\n\n"
+              f"_Redacted automatically. Terms that matched: {len(hits)}._"
+          )
+
+          endpoint = (
+              f"repos/{os.environ['REPO']}/pulls/comments/{os.environ['COMMENT_ID']}"
+              if os.environ["EVENT_NAME"] == "pull_request_review_comment"
+              else f"repos/{os.environ['REPO']}/issues/comments/{os.environ['COMMENT_ID']}"
+          )
+          subprocess.run(
+              ["gh", "api", "-X", "PATCH", endpoint, "-F", "body=@-"],
+              input=replacement, text=True, check=True,
+          )
+          print(f"redacted: {', '.join(hits)}")
+          PY
