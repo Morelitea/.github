@@ -13,8 +13,24 @@ import {readFileSync} from 'node:fs';
 const text = readFileSync('SECURITY.md', 'utf8');
 const problems = [];
 
-// A reporting route. Without one the document is an essay.
-if (!/\b[\w.+-]+@[\w-]+\.[\w.-]+\b/.test(text) && !/security\/advisories\/new/.test(text)) {
+function sectionBody(heading) {
+  const headings = [...text.matchAll(/^##\s+(.+?)\s*$/gm)];
+  const index = headings.findIndex((match) => match[1].toLowerCase() === heading.toLowerCase());
+  if (index === -1) return null;
+  const start = headings[index].index + headings[index][0].length;
+  const end = headings[index + 1]?.index ?? text.length;
+  return text.slice(start, end);
+}
+
+// The route belongs in the reporting section. An address in background text
+// does not tell a reporter where to send a vulnerability.
+const reporting = sectionBody('How to report');
+if (reporting === null) {
+  problems.push('no "How to report" section');
+} else if (
+  !/\b[\w.+-]+@[\w-]+\.[\w.-]+\b/.test(reporting) &&
+  !/security\/advisories\/new/.test(reporting)
+) {
   problems.push('no reporting route: neither an email address nor a private advisory link');
 }
 

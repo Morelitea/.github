@@ -23,4 +23,5 @@ jobs:
       # This repository has no package.json and needs none — the check is one
       # script against one file, and a dependency would be a supply chain for a
       # thing that reads Markdown.
+      - run: node --test scripts/check-security-policy.test.mjs
       - run: node scripts/check-security-policy.mjs
