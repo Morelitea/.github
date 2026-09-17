@@ -5,7 +5,7 @@ that does not carry its own `SECURITY.md`.
 
 ## How to report
 
-Email **security@morelitea.com**. Please do not open a public issue.
+Please do not open a public issue.
 
 Include what you can:
 
