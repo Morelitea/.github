@@ -1,49 +1,47 @@
-# Morelitea
+# 🍄 Beyonders Studio
 
-Welcome to Morelitea, a family-owned and operated business dedicated to creating games, gaming support tools, and custom tea blends!
+**Tea, story and wonder: a family art studio.**
 
-## 🍄 About Us
+We're the Morels, a family in Woodinville, WA, and at heart we're an art company. Together we made the world of Beyond, the Isles of Mycorzha and the critters and characters who live there, inspired by our family values and the adventures we've shared. That world turns up in everything we make: stories, art, games and tea.
 
-At Morelitea, we believe in the power of creativity, gaming, and the joy of sharing a cup of tea. Our family, the Morels, is passionate about developing immersive gaming experiences and crafting unique tea blends inspired by our content. With a blend of technical expertise and a love for games, we strive to create high-quality software and enjoyable tea experiences for our community.
+## The family
 
-### The Morel Family
+- **Jordan ("Moss")**: frontend UX engineer with 14+ years in the industry. Also blends and packs the tea and makes the graphics.
+- **Lee**: full-stack engineer and software architect with 2 years in, building the systems the studio runs on. Also handles logistics, tea blending and world-building.
+- **Melisande ("Mel")**: QC developer with 14+ years of experience, running the testing workflows that keep our software stable for the long haul. Also the storyteller who ties it all together.
+- **Viw**: resident artist, painting Mycorzha's creatures by hand
+- **Atlas**: social media
+- **Alex**: chief creature-idea officer, age 10
+- **Gizmo, Samwise & Cheeto**: supervision
 
-- **Lee** - 
-  Lee brings a wealth of experience in both development and business management. With a keen eye for detail, Lee ensures that our projects meet technical excellence and align with our business goals.
+## What we make
 
-- **Jordan** - 
-  Jordan is a seasoned full-stack developer with a focus on building robust software solutions. With a passion for gaming and a deep understanding of software engineering principles, Jordan leads our development efforts and ensures the quality of our projects.
+### ☕ Morelitea
 
-- **Melisande** - 
-  Melisande oversees project management and quality assurance. With exceptional organizational skills and a dedication to ensuring the best user experience, Melisande ensures that our projects are delivered on time and meet the highest standards.
+[**Morelitea**](https://morelitea.com/) is our tea: hand-blended loose-leaf teas inspired by the Isles of Mycorzha. Each month the **Beyonders Club** introduces a new character with a tea blended just for them, plus an original fairy tale and collectible art.
 
-## 🍄 Projects
+### 🗺️ Mycorzha Map
 
-We have developed several exciting projects within the Morelitea organization. Here are a few highlights:
+[**Mycorzha Map**](https://github.com/Morelitea/Mycorzha-Map) is an interactive atlas and creature compendium for the fungal realms of Mycorzha. It runs in the browser or as a desktop app.
 
-### JavaScript Dice Roller Package
+## How we work: Initiative
 
-Our free and open-source JavaScript Dice Roller Package provides a versatile tool for rolling dice in web-based games. It offers a simple and intuitive API, making it easy for developers to integrate dice rolling functionality into their projects.
+[**Initiative**](https://github.com/Morelitea/initiative) is how we run Beyonders Studio. It's a self-hosted shared workspace where tasks, documents, calendars, dashboards and more live in one place, and everyone edits them together, live. We built it for ourselves and made it open source, so any team or community can run it too.
 
-- Repository: [link to repository]
+- 📖 **Docs:** [morelitea.github.io/initiative](https://morelitea.github.io/initiative/)
+- 🐳 **Run it:** `docker pull morelitea/initiative`
 
-### Pathkit - GM Organization Tool for Pathfinder Players
+**Building apps for Initiative?**
 
-Pathkit is a powerful open-source GM organization tool designed specifically for Pathfinder players. It simplifies campaign management, player tracking, and encounter planning, allowing Game Masters to focus on crafting immersive storytelling experiences.
+- [**initiative-app-kit**](https://github.com/Morelitea/initiative-app-kit): the protocol side of writing an app (request signing, context-token verification, manifest validation).
+- [**initiative-developer**](https://github.com/Morelitea/initiative-developer): where Initiative's apps are built and published, including the signed catalogue.
 
-- Repository: [https://github.com/Morelitea/PathKit]
+### From the archive
 
-## 🍄 Custom Tea Blends :tea:
+- [**PathKit**](https://github.com/Morelitea/PathKit): an all-in-one GM screen for Pathfinder 2e. It isn't maintained anymore.
 
-In addition to our software projects, we offer a selection of custom tea blends inspired by our gaming content. These unique blends are carefully crafted using high-quality ingredients, designed to accompany your gaming sessions and add a touch of magic to your tea break.
+## Say hello
 
-Check out our website [link to website] to explore our tea collection and discover the perfect blend for your gaming adventures.
-
-## 🍄 Get Involved
-
-We welcome contributions, feedback, and collaboration from the community. If you're interested in our projects or have any questions, feel free to reach out to us.
-
-- Email: [email address]
-- Discord: [Discord server invite]
-
-We're excited to connect with fellow gamers, developers, and tea enthusiasts. Join us on this journey of creativity and enjoyment!
+- **Tea, wholesale or anything else:** [morelitea.com](https://morelitea.com/) or admin@morelitea.com
+- **Found a bug or have an idea for Initiative?** [Open an issue](https://github.com/Morelitea/initiative/issues).
+- **Follow along:** @morelitea on Instagram, TikTok, Facebook and Pinterest
